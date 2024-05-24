@@ -53,7 +53,7 @@ function MenuFiltro({productos,opcionesFiltro,setOpcionesFiltro}){
       <h2 className="text-[25px]">Categoria</h2>
       <ul>
         {caracteristicasDatos.categoria && caracteristicasDatos.categoria.map(cat=>(
-          <li key={cat} className="text-[10px]"><input type="checkbox" onChange={(e)=>changeHandler(e,cat,"categoria")}/>{cat}</li>
+          <li key={cat} className="text-[10px]"><input type="checkbox" onChange={(e)=>changeHandler(e,cat,"categoria")}/> {cat}</li>
         ))}
       </ul>
     </div>

@@ -20,7 +20,7 @@ module.exports = {
           'titulo titulo titulo titulo titulo titulo titulo titulo ',
           'categoria categoria categoria categoria categoria categoria precio precio',
           'categoria categoria categoria categoria categoria categoria precio precio',
-          'rating rating existencias existencias descuento descuento precio precio',
+          'rating rating existencia existencia descuento descuento precio precio',
           'descripcion descripcion descripcion descripcion descripcion descripcion descripcion descripcion',
           'descripcion descripcion descripcion descripcion descripcion descripcion descripcion descripcion',
           'descripcion descripcion descripcion descripcion descripcion descripcion descripcion descripcion',

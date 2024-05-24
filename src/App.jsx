@@ -25,8 +25,8 @@ const ajustarProductos = (data)=>data.map(datum=>(
 
 function App() {
   const [productos,setProductos] = useLocalStorage("productos")
-  console.log(productos)
   const [opcionesFiltro,setOpcionesFiltro] = useState([])
+  const [busqueda,setBusqueda] = useState("")
 
   useEffect(()=>{
     if(productos.length == 0){
@@ -40,15 +40,16 @@ function App() {
       {/*<img src={gestionLogo} className="logo fill-cl3" alt="Gestion logo" />*/}
       <div className="flex flex-row place-content-center gap-[20px] items-center">
         <Logo classN="text-cl5 fill-current w-[92px]" />
-        <h1 className="text-[40px] font-permark ">Gestión de Inventario</h1>
+        <h1 className="text-[40px] font-permark text-cl5">Gestión de Inventario</h1>
+        <input type="text" placeholder="Buscar..." className="justify-self-end relative left-[100px]" value={busqueda} onChange={(e)=>setBusqueda(e.target.value)} />
       </div>
       {/*<FilterLogo classN="text-cl5 fill-current w-[92px]" />
       <PackagesLogo classN="text-cl5 fill-current w-[92px]" />
       <EditLogo classN="text-cl5 fill-current w-[92px] cursor-pointer opacity-0 hover:opacity-100" />
       <TrashLogo classN="text-cl5 fill-current w-[92px] cursor-pointer opacity-0 hover:opacity-100" />*/}
-      <div className="flex flex-row gap-[20px] ">
+      <div className="flex flex-row gap-[20px] justify-center items-start">
         <MenuFiltro productos={productos} opcionesFiltro={opcionesFiltro} setOpcionesFiltro={setOpcionesFiltro}  />
-        <ListaProductos productos={productos} setProductos={setProductos} />
+        <ListaProductos productos={productos} setProductos={setProductos} busqueda={busqueda} />
       </div>
     </>
   )
