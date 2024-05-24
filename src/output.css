@@ -554,16 +554,65 @@ video {
   --tw-contain-style:  ;
 }
 
-.invisible {
-  visibility: hidden;
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.right-0 {
+  right: 0px;
+}
+
+.top-0 {
+  top: 0px;
+}
+
+.mx-\[5px\] {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.ml-\[10px\] {
+  margin-left: 10px;
+}
+
+.ml-\[20px\] {
+  margin-left: 20px;
+}
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
 }
 
 .hidden {
   display: none;
 }
 
+.h-full {
+  height: 100%;
+}
+
+.w-\[277px\] {
+  width: 277px;
+}
+
 .w-\[92px\] {
   width: 92px;
+}
+
+.w-\[968px\] {
+  width: 968px;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .transform {
@@ -574,14 +623,87 @@ video {
   cursor: pointer;
 }
 
+.grid-cols-info-producto {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.grid-cols-producto-layout {
+  grid-template-columns: 283px;
+}
+
+.grid-rows-info-producto {
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.grid-rows-producto-layout {
+  grid-template-rows: 113px 149px;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.place-content-center {
+  place-content: center;
+}
+
+.place-items-center {
+  place-items: center;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.gap-\[25px\] {
+  gap: 25px;
+}
+
+.gap-\[2px\] {
+  gap: 2px;
+}
+
+.gap-\[20px\] {
+  gap: 20px;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
+.rounded {
+  border-radius: 0.25rem;
+}
+
+.border-t {
+  border-top-width: 1px;
+}
+
+.border-cl3 {
+  --tw-border-opacity: 1;
+  border-color: rgb(193 162 160 / var(--tw-border-opacity));
+}
+
 .bg-cl1 {
   --tw-bg-opacity: 1;
   background-color: rgb(252 253 235 / var(--tw-bg-opacity));
 }
 
-.bg-cl5 {
+.bg-cl2 {
   --tw-bg-opacity: 1;
-  background-color: rgb(50 32 48 / var(--tw-bg-opacity));
+  background-color: rgb(227 206 189 / var(--tw-bg-opacity));
 }
 
 .fill-cl3 {
@@ -592,9 +714,58 @@ video {
   fill: currentColor;
 }
 
-.text-cl1 {
+.p-\[30px\] {
+  padding: 30px;
+}
+
+.px-\[5px\] {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.pb-\[20px\] {
+  padding-bottom: 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.font-permark {
+  font-family: Permanent Marker, Roboto;
+}
+
+.font-roboto {
+  font-family: Roboto;
+}
+
+.text-\[10px\] {
+  font-size: 10px;
+}
+
+.text-\[12px\] {
+  font-size: 12px;
+}
+
+.text-\[25px\] {
+  font-size: 25px;
+}
+
+.text-\[30px\] {
+  font-size: 30px;
+}
+
+.text-\[8px\] {
+  font-size: 8px;
+}
+
+.text-\[40px\] {
+  font-size: 40px;
+}
+
+.text-cl4 {
   --tw-text-opacity: 1;
-  color: rgb(252 253 235 / var(--tw-text-opacity));
+  color: rgb(114 91 117 / var(--tw-text-opacity));
 }
 
 .text-cl5 {
@@ -606,14 +777,70 @@ video {
   opacity: 0;
 }
 
-.hover\:visible:hover {
-  visibility: visible;
+.shadow-\[0_4px_4px_0_rgba\(0\2c 0\2c 0\2c 0\.25\)\] {
+  --tw-shadow: 0 4px 4px 0 rgba(0,0,0,0.25);
+  --tw-shadow-colored: 0 4px 4px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.grid-areas-info-producto {
+  grid-template-areas: "titulo titulo titulo titulo titulo titulo titulo titulo "
+"titulo titulo titulo titulo titulo titulo titulo titulo "
+"categoria categoria categoria categoria categoria categoria precio precio"
+"categoria categoria categoria categoria categoria categoria precio precio"
+"rating rating existencias existencias descuento descuento precio precio"
+"descripcion descripcion descripcion descripcion descripcion descripcion descripcion descripcion"
+"descripcion descripcion descripcion descripcion descripcion descripcion descripcion descripcion"
+"descripcion descripcion descripcion descripcion descripcion descripcion descripcion descripcion";
+}
+
+.grid-areas-producto-layout {
+  grid-template-areas: "imagen"
+"info-pro";
+}
+
+.grid-in-titulo {
+  grid-area: titulo;
+}
+
+.grid-in-categoria {
+  grid-area: categoria;
+}
+
+.grid-in-precio {
+  grid-area: precio;
+}
+
+.grid-in-rating {
+  grid-area: rating;
+}
+
+.grid-in-existencias {
+  grid-area: existencias;
+}
+
+.grid-in-descuento {
+  grid-area: descuento;
+}
+
+.grid-in-descripcion {
+  grid-area: descripcion;
+}
+
+.grid-in-imagen {
+  grid-area: imagen;
+}
+
+.grid-in-info-pro {
+  grid-area: info-pro;
 }
 
 .hover\:opacity-100:hover {
   opacity: 1;
 }
 
-.hover\:opacity-0:hover {
-  opacity: 0;
-}
+

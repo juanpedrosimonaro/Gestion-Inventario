@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 
-function useLocalStorage(getIfEmpty, key, callback) {
-  const [value, setValue] = useState(async function () {
+function useLocalStorage(key) {
+  const [value, setValue] = useState(function () {
     const storedValue = localStorage.getItem(key);
-    const defaultValue = await fetch(getIfEmpty).then(res=>callback(res.json()));
-    console.log(defaultValue);
-    return storedValue ? JSON.parse(storedValue) : defaultValue ;
+    return storedValue  ? JSON.parse(storedValue) : [];
   });
 
   useEffect(

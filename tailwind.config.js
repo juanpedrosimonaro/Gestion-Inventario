@@ -11,10 +11,35 @@ module.exports = {
         cl5:"#322030"
       },
       fontFamily: {
-        permark: ['Permanent Marker','Roboto']
+        permark: ['Permanent Marker','Roboto'],
+        roboto: ['Roboto']
+      },
+      gridTemplateAreas:{
+        'info-producto':[
+          'titulo titulo titulo titulo titulo titulo titulo titulo ',
+          'titulo titulo titulo titulo titulo titulo titulo titulo ',
+          'categoria categoria categoria categoria categoria categoria precio precio',
+          'categoria categoria categoria categoria categoria categoria precio precio',
+          'rating rating existencias existencias descuento descuento precio precio',
+          'descripcion descripcion descripcion descripcion descripcion descripcion descripcion descripcion',
+          'descripcion descripcion descripcion descripcion descripcion descripcion descripcion descripcion',
+          'descripcion descripcion descripcion descripcion descripcion descripcion descripcion descripcion',
+        ],
+        'producto-layout':[
+          'imagen',
+          'info-pro'
+        ]
+      },
+      gridTemplateColumns:{
+        'info-producto':'1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr',
+        'producto-layout':'283px'
+      },
+      gridTemplateRows:{
+        'info-producto':'1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr',
+        'producto-layout':'113px 149px'
       }
-    },
+    }
 
   },
-  plugins: [],
+  plugins: [require('@savvywombat/tailwindcss-grid-areas')],
 }
