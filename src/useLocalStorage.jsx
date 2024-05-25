@@ -8,7 +8,6 @@ function useLocalStorage(key) {
 
   useEffect(
     function () {
-      debugger
       localStorage.setItem(key, JSON.stringify(value));
     },
     [value, key]

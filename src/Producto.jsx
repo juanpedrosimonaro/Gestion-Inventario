@@ -4,21 +4,22 @@ import CheckLogo from './CheckLogo.jsx'
 import CloseLogo from './CloseLogo.jsx'
 import PackagesLogo from './PackagesLogo.jsx'
 import {useState} from 'react'
-function Producto({producto,index,eliminarProducto,editarProducto}){
+function Producto({producto,index,eliminarProducto,editarProducto,setMessage}){
   const [editando,setEditando] = useState(false);
-  //const toggleEditando = ()=>setEditando(!editando);
   const handleSubmit = (e)=>{
     setEditando(false);
     editarProducto({
       imagen:e.target.imagen.value,
       titulo:e.target.titulo.value,
-      precio:e.target.precio.value,
+      precio:Number(e.target.precio.value),
       categoria:e.target.categoria.value,
-      rating:e.target.rating.value,
-      existencia:e.target.existencia.value,
-      descuento:e.target.descuento.value,
+      rating:Number(e.target.rating.value),
+      existencia:Number(e.target.existencia.value),
+      descuento:Number(e.target.descuento.value),
       descripcion:e.target.descripcion.value
     },Number(e.target.key.value)); 
+    setMessage("El Producto se ha editado exitosamente");
+    setTimeout(() => setMessage(''), 5000);
   }
   return (
     <li key={index}>
@@ -43,14 +44,14 @@ function Producto({producto,index,eliminarProducto,editarProducto}){
           </div>
         </form>
           :
-      <div className="grid grid-areas-producto-layout grid-cols-producto-layout grid-rows-producto-layout relative gap-[2px] font-permark text-[12px] bg-cl2 border-cl3 overflow-hidden">
+      <div className="grid grid-areas-producto-layout grid-cols-producto-layout grid-rows-producto-layout relative gap-[2px] font-permark text-[12px] bg-cl2 border-cl3 overflow-hidden rounded-lg">
         <div id="botonesProducto" className="absolute top-0 right-0 flex flex-row gap-[10px]" >
           <EditLogo handlerClick={()=>setEditando(true)} classN="text-cl5 fill-current w-[20px] cursor-pointer hover:text-cl4" />
           <TrashLogo handlerClick={()=>eliminarProducto(index)} classN="text-cl5 fill-current w-[20px] cursor-pointer hover:text-cl4" />
         </div>
-        {producto.imagen != "" ?  <img src={producto.imagen} className="grid-in-imagen w-full h-full" /> : <PackagesLogo classN="text-cl5 fill-current grid-in-imagen w-full h-full px-[5px]" /> }
+        {producto.imagen != "" ?  <img src={producto.imagen} className="grid-in-imagen w-full h-full" /> : <PackagesLogo classN="text-cl5 fill-current grid-in-imagen w-full h-full" /> }
       
-          <div id="infoProducto" className="grid grid-in-info-pro grid-areas-info-producto grid-cols-info-producto grid-rows-info-producto p-[5px]">
+        <div id="infoProducto" className="grid grid-in-info-pro grid-areas-info-producto grid-cols-info-producto grid-rows-info-producto p-[5px]">
           <span className="grid-in-titulo overflow-hidden" >{producto.titulo}</span>
           <span className="grid-in-precio flex justify-content-center items-center text-center" >${producto.precio}</span>
           <span className="grid-in-categoria" >{producto.categoria}</span>
