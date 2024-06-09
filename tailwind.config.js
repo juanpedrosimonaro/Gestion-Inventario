@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js,jsx}","./index.html"],
+  content: ["./frontend/**/*.{html,js,jsx}","./index.html"],
   theme: {
     extend: {
       colors: {
@@ -25,6 +25,13 @@ module.exports = {
           'descripcion descripcion descripcion descripcion descripcion descripcion descripcion descripcion',
           'descripcion descripcion descripcion descripcion descripcion descripcion descripcion descripcion',
         ],
+        'info-usuario':[
+          'nombre apellido',
+          'correo correo',
+          'rol telefono',
+          'direccion direccion',
+          'direccion direccion',
+        ],
         'producto-layout':[
           'imagen',
           'info-pro'
@@ -32,10 +39,12 @@ module.exports = {
       },
       gridTemplateColumns:{
         'info-producto':'1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr',
+        'info-usuario':'1fr 1fr',
         'producto-layout':'283px'
       },
       gridTemplateRows:{
         'info-producto':'1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr',
+        'info-usuario':'1fr 1fr 1fr 1fr 1fr',
         'producto-layout':'113px 149px'
       }
     }

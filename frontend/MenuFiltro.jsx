@@ -1,4 +1,5 @@
 function obtenerRangos(array){
+  for(var escala=0; !array.every(num=>(Math.pow(10,escala)*num)%1==0); escala++){};
   var tamArray = array.length
   var tamRango = 0;
   var divisiones = 0;
@@ -9,31 +10,38 @@ function obtenerRangos(array){
   var rangos = []
   for (var i=0; i < divisiones; i++){
     if(i!=0){
-      inferior = superior - 1
+      inferior = (superior - (1/Math.pow(10,escala))).toFixed(escala);
     }
     else {
      inferior = array[0]}
     if (i==divisiones-1){
-     superior = array[tamArray-1]
+     superior = array[tamArray-1];
     }else{
-    superior = Math.floor((array[Math.round((i+1)*tamRango)-2]+array[Math.round((i+1)*tamRango-1)])/2)}
-    rangos.push(`${inferior}-${superior}`)
+      superior = (Math.floor(Math.pow(10,escala)*(array[Math.round((i+1)*tamRango)-2]+array[Math.round((i+1)*tamRango-1)])/2)/Math.pow(10,escala)).toFixed(escala);
+    }
+    rangos.push(`${inferior} - ${superior}`);
+    //rangos.push({max:Number(inferior),min:Number(superior)});
   }
   return rangos
 }
+
 function MenuFiltro({productos,opcionesFiltro,setOpcionesFiltro}){
+
   var caracteristicasDatos = {};
-  console.log("Productos",productos)
   productos.forEach(el=>Object.keys(el).forEach(c=>caracteristicasDatos[c] != undefined ? !caracteristicasDatos[c].includes(el[c]) && caracteristicasDatos[c].push(el[c]) : caracteristicasDatos[c]=[el[c]]));
   var caractRangos = Object.keys(caracteristicasDatos).length!=0 && ["precio","descuento","rating"].reduce((prev,cur)=>{  prev[cur]=obtenerRangos(caracteristicasDatos[cur].sort((a,b)=>b-a)); return prev},{})
+
   const changeHandler = (e,opcion,caracteristica) =>{
    if(e.target.checked){
      setOpcionesFiltro({...opcionesFiltro,[caracteristica]: opcionesFiltro[caracteristica] ? [...opcionesFiltro[caracteristica],opcion] : [opcion]})
    }else{
-     setOpcionesFiltro({...opcionesFiltro,[caracteristica]: opcionesFiltro[caracteristica].filter(op=>op!=opcion)})
+     var opcionFiltrada = opcionesFiltro[caracteristica].filter(op=>op!=opcion)
+     opcionFiltrada.length != 0 ? 
+       setOpcionesFiltro({...opcionesFiltro,[caracteristica]:  opcionFiltrada }) :
+       setOpcionesFiltro(Object.keys(opcionesFiltro).filter(op=>op!=caracteristica).reduce((prev,cur)=>{prev[cur]=opcionesFiltro[cur]; return prev},{}))     
    } 
   }
-  console.log(caractRangos)
+
   return (
     <div className="bg-cl2 text-cl4 rounded-xl w-[277px] font-roboto flex flex-col items-center pb-[20px] shadow-[0_4px_4px_0_rgba(0,0,0,0.25)]">
       <h1 className="font-permark text-[30px] text-cl5">Filtrar por...</h1>
