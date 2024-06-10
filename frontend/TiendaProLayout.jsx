@@ -7,7 +7,7 @@ import TrashLogo from './TrashLogo.jsx';
 import MenuFiltro from './MenuFiltro.jsx';
 import ListaProductos from './ListaProductos.jsx';
 import ListaUsuarios from './ListaUsuarios.jsx';
-import useLocalStorage from './useLocalStorage.jsx';
+//import useLocalStorage from './useLocalStorage.jsx';
 import useNotification from './useNotification.jsx';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -25,6 +25,7 @@ function TiendaProLayout({modo="producto"}) {
   const ErrorNotification = useNotification(error,"error");
   const { usuarioData, authToken } = useAuth();
 
+
   useEffect(()=>{
     if(modo == "producto" && productos.length == 0){
       axios.get("/api/productos").then(res=>setProductos(res.data)).catch(e=>setError(e));
@@ -34,6 +35,7 @@ function TiendaProLayout({modo="producto"}) {
     }
   }
   ,[])
+
 
   return (
     <>
@@ -46,14 +48,17 @@ function TiendaProLayout({modo="producto"}) {
           <option value="descripcion" >Descripcion</option>
           <option value="categoria" >Categoria</option>
         </select>
-        {usuarioData != null ?  (<><Link to="/logout">Cerrar Sesión</Link>{usuarioData.rol=="administrador" && ( modo=="producto" ? (<Link to="/administrador/gestionUsuarios">Gestionar Usuarios</Link>) : (<Link to="/administrador/gestionProductos">Gestionar Productos</Link>))}</>) : (<><Link to="/login">Iniciar Sesión</Link><Link to="/registro">Registrarse</Link></>) }
+        {usuarioData != null ?  (<><Link to="/logout">Cerrar Sesión</Link>{usuarioData.rol=="administrador" ? ( modo=="producto" ? (<Link to="/administrador/gestionUsuarios">Gestionar Usuarios</Link>) : (<Link to="/administrador/gestionProductos">Gestionar Productos</Link>)) : <Link to="/usuario/perfil">Mi perfil</Link> }</>) : (<><Link to="/login">Iniciar Sesión</Link><Link to="/registro">Registrarse</Link></>) }
       </div>
       <div className="flex flex-row gap-[20px] justify-center items-start">
         { modo == "producto" && productos.length != 0 ? (
           <>
             <FilterLogo classN="text-cl5 hidden fill-current" />
             <MenuFiltro productos={productos} opcionesFiltro={opcionesFiltro} setOpcionesFiltro={setOpcionesFiltro}  /> 
+            <div>
             <ListaProductos productos={productos} setProductos={setProductos} setMessage={setMessage} setError={setError} busqueda={busqueda} opcionesFiltro={opcionesFiltro} criterio={criterio} />
+            </div>
+
           </>
         ) : modo == "usuario" && usuarios.length != 0 && (
           <ListaUsuarios usuarios={usuarios} setUsuarios={setUsuarios} setMessage={setMessage} setError={setError} />

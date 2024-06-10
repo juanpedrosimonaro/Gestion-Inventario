@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Logo from './Logo.jsx';
 import useNotification from './useNotification.jsx';
 import { useAuth } from './AuthProvider.jsx';
+import axios from 'axios'
 
 function PaginaRegistro() {
   const [message, setMessage] = useState("");
@@ -9,7 +10,7 @@ function PaginaRegistro() {
   const Notification = useNotification(message)
   const ErrorNotification = useNotification(error,"error")
 
-  const { usuarioData, login } = useAuth();
+  const { usuarioData, login, authToken } = useAuth();
   const [correo, setCorreo] = useState(usuarioData.correo);
   const [contrasena, setContrasena] = useState('');
   const [repeticionCon, setRepeticionCon] = useState('');
@@ -20,7 +21,7 @@ function PaginaRegistro() {
 
   const handleRegistro = async (event) => {
     event.preventDefault();
-    if(contrasena == repeticionContrasena)
+    if(contrasena == repeticionCon)
       axios.put(`/api/producto/${usuarioData._id}`,{nombre,apellido,correo,contrasena,direccion,telefono},{headers: {"Authorization": `Bearer ${authToken}`}}).then(res=>login(correo,contrasena)) 
   };
 
@@ -32,8 +33,8 @@ function PaginaRegistro() {
         <Logo classN="text-cl5 fill-current w-[92px]" />
         <h1 className="text-[40px] font-permark text-cl5">TiendaPro</h1>
       </div>
+      <form className="flex flex-col gap-[20px] justify-center items-center mt-[50px]" onSubmit={handleRegistro}>
       <h1 className="text-[40px] font-permark text-cl5">Editar Perfil</h1>
-      <form className="flex flex-col gap-[20px] justify-center items-start" onSubmit={handleRegistro}>
         <input
           type="text"
           value={correo}
@@ -73,7 +74,7 @@ function PaginaRegistro() {
         <input
           type="text"
           value={telefono}
-          placeholder="Direccion"
+          placeholder="Telefono"
           onChange={(e) => setTelefono(e.target.value)}
         />
         <button type="submit">Editar Perfil</button>

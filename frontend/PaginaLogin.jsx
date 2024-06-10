@@ -25,7 +25,7 @@ function PaginaLogin() {
         <h1 className="text-[40px] font-permark text-cl5">TiendaPro</h1>
       </div>
       <h1 className="text-[40px] font-permark text-cl5">Inicio de Sesión</h1>
-      <form className="flex flex-col gap-[20px] justify-center items-start" onSubmit={handleLogin}>
+      <form className="flex flex-col place-content-center gap-[20px] justify-center items-start" onSubmit={handleLogin}>
         <div>
           <input
             type="text"

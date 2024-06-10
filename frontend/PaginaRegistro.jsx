@@ -31,7 +31,7 @@ function PaginaRegistro() {
         <h1 className="text-[40px] font-permark text-cl5">TiendaPro</h1>
       </div>
       <h1 className="text-[40px] font-permark text-cl5">Registro de Usuario</h1>
-      <form className="flex flex-col gap-[20px] justify-center items-start" onSubmit={handleRegistro}>
+      <form className="flex flex-col place-content-center gap-[20px] justify-center items-start" onSubmit={handleRegistro}>
         <input
           type="text"
           value={correo}
